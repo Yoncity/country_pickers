@@ -92,19 +92,20 @@ class _CountryPickerDropdownState extends State<CountryPickerDropdown> {
 
     return Row(
       children: <Widget>[
-        DropdownButtonHideUnderline(
-          child: DropdownButton<Country>(
-            isDense: true,
-            isExpanded: widget.isExpanded,
-            onChanged: (value) {
-              setState(() {
-                _selectedCountry = value;
-                widget.onValuePicked(value);
-              });
-            },
-            items: items,
-            value: _selectedCountry,
+        DropdownButton<Country>(
+          isExpanded: widget.isExpanded,
+          underline: Container(
+            height: 2,
+            color: Colors.grey,
           ),
+          onChanged: (value) {
+            setState(() {
+              _selectedCountry = value;
+              widget.onValuePicked(value);
+            });
+          },
+          items: items,
+          value: _selectedCountry,
         ),
       ],
     );
